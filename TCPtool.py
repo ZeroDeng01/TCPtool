@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # -*- coding:utf-8 -*-
 import win32com
 import socket
@@ -203,7 +202,7 @@ if __name__ == "__main__":
     Form.show()
     sys.exit(app.exec_())
 
-=======
+
 # -*- coding:utf-8 -*-
 import win32com
 import socket
@@ -408,4 +407,4 @@ if __name__ == "__main__":
     Form.show()
     sys.exit(app.exec_())
 
->>>>>>> f0451cb4b067297b3d42c31d8f38978068ba8f24
+
