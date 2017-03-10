@@ -27,6 +27,9 @@ class Ui_Form(object):
         Form.resize(1293, 643)
         Form.setMinimumSize(QtCore.QSize(1293, 643))
         Form.setMaximumSize(QtCore.QSize(1293, 643))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("danm.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Form.setWindowIcon(icon)
         self.label_8 = QtGui.QLabel(Form)
         self.label_8.setGeometry(QtCore.QRect(30, 620, 91, 20))
         self.label_8.setObjectName(_fromUtf8("label_8"))
@@ -237,9 +240,24 @@ class Ui_Form(object):
         Date = str(self.DATE.text())
         DateTime = str(self.DATETIME.text())
         E = str(self.E.text())
+        Estr = E.split(".")[1]
+        l = 0
+        if(len(Estr)<7):
+            num = 7-len(Estr)
+            while l<num:
+                E = E + "0"
+                l += 1
         N = str(self.N.text())
+        x = 0
+        Nstr = N.split(".")[1]
+        if(len(Nstr)<7):
+            num = 7-len(Nstr)
+            while x<num:
+                N = N + "0"
+                x += 1
         print E
         print N
+
         War = str(self.WARING.currentIndex())
         WarStr = ''
         if (War=="0"):
@@ -249,7 +267,7 @@ class Ui_Form(object):
         if (War=="2"):
             WarStr = 'WN'
 
-        TEXT = "$%s,A,D:%s,T:%s,E,%s,N,%s*%s#"%(ID,Date,DateTime,E,N,WarStr)                # 发送内容
+        TEXT = "$%s,A,D:%s,T:%s,E,%s,N,%s*%s#x"%(ID,Date,DateTime,E,N,WarStr)                # 发送内容
         s = None
         for res in socket.getaddrinfo(HOST, PORT, socket.AF_UNSPEC, socket.SOCK_STREAM):
             af, socktype, proto, canonname, sa = res
